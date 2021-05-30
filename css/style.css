@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+body {
+  --transition-delay: .3s;
+  --narbar-height: 4rem;
+
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color var(--transition-delay), color var(--transition-delay);
+  font-family: 'Roboto Slab', serif;
+  text-align: center;
+}
+
+.navbar {
+  background-color: var(--navbar-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--narbar-height);
+  z-index: 1;
+}
+
+.logo {
+  margin: .5rem;
+  width: 2.5rem;
+}
+
+.title {
+  --title-margin: 2rem;
+
+  margin-top: calc(var(--narbar-height) + var(--title-margin));
+  margin-bottom: var(--title-margin);
+  font-size: 3rem;
+}
+
+.form {
+  text-align: left;
+  display: inline-block;
+}
+
+.form > * {
+  margin: 1rem;
+  font-family: inherit;
+  font-size: 1.5rem;
+}
+
+.hint {
+  color: red;
+}
+
+.btn {
+  cursor: pointer;
+  text-decoration: none;
+  border: .15rem solid orange;
+  border-radius: 5rem;
+  color: var(--text-color);
+  transition: all var(--transition-delay);
+  font-size: 1.5rem;
+  background-color: inherit;
+}
+
+.btn:hover {
+  background-color: orange;
+}
+
+.submit {
+  padding: 1rem 2rem;
+}
+
+.user-option {
+  margin-left: auto;
+  display: flex;
+}
+
+.user-option > * {
+  margin: auto 1rem;
+}
+
+.option {
+  padding: .5rem 1rem;
+}
+
+.avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.avatar:hover {
+  box-shadow: 0 0 1rem red;
+}
+
+.image {
+  width: 10rem;
+}

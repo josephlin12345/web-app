@@ -1,0 +1,11 @@
+body, .light {
+  --background-color: white;
+  --text-color: black;
+  --navbar-color: gray;
+}
+
+.dark {
+  --background-color: #424242;
+  --text-color: white;
+  --navbar-color: #212529;
+}
