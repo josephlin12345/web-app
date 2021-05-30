@@ -114,7 +114,7 @@
       if(!$success) echo $pdo_err;
 
       $user = get_user($user['email']);
-      unset($user['password']);
+      // unset($user['password']);
       return $user;
     }
     catch(PDOException) {

@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
 body {
-  --transition-delay: .3s;
+  --transition-duration: .3s;
   --narbar-height: 4rem;
 
   margin: 0;
   background-color: var(--background-color);
   color: var(--text-color);
-  transition: background-color var(--transition-delay), color var(--transition-delay);
+  transition-duration: var(--transition-duration);
   font-family: 'Roboto Slab', serif;
   text-align: center;
 }
@@ -58,7 +58,7 @@ body {
   border: .15rem solid orange;
   border-radius: 5rem;
   color: var(--text-color);
-  transition: all var(--transition-delay);
+  transition: all var(--transition-duration);
   font-size: 1.5rem;
   background-color: inherit;
 }
