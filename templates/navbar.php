@@ -38,5 +38,6 @@
         ';
       }
     ?>
+    <a class="btn option" href="<?php echo $path; ?>about.php">!</a>
   </div>
 </nav>
