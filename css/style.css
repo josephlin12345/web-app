@@ -27,7 +27,7 @@ body {
 
 .logo {
   margin: .5rem;
-  width: 2.5rem;
+  width: 3rem;
 }
 
 .title {
@@ -61,7 +61,6 @@ body {
   transition-duration: var(--transition-duration);
   background-color: inherit;
   white-space: nowrap;
-  float: right;
 }
 
 .btn:hover {
@@ -76,6 +75,10 @@ body {
 .btn-big {
   padding: 1rem 2rem;
   font-size: 1.5rem;
+}
+
+.btn-right {
+  float: right;
 }
 
 .user-option {
@@ -103,4 +106,19 @@ body {
 
 textarea {
   resize: none;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.post {
+  width: 40rem;
+}
+
+.post-info {
+  display: flex;
 }

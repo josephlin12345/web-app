@@ -1,6 +1,6 @@
 <form class="form" action="" method="POST">
   <textarea
-    name="post"
+    name="content"
     cols="40"
     rows="3"
     maxlength="1000"
@@ -9,8 +9,9 @@
     autofocus
   ></textarea>
   <br>
+  <input type="hidden" id="recaptcha_response" name="recaptcha_response">
   <input
-    class="btn btn-small"
+    class="btn btn-small btn-right"
     type="submit"
     name="submit"
     value="發布(Post)"

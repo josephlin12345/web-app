@@ -31,14 +31,7 @@
   // return true if success
   function add_user($name, $password, $email) {
     global $db_conn, $pdo_err;
-    $query = '
-      INSERT INTO
-        users
-      SET
-        email=:email,
-        name=:name,
-        password=:password
-    ';
+    $query = 'INSERT INTO users SET name=:name, password=:password, email=:email';
     try {
       $stmt = $db_conn->prepare($query);
       $success = $stmt->execute(
@@ -59,14 +52,7 @@
   // return user if found else false
   function get_user($email) {
     global $db_conn, $pdo_err;
-    $query = '
-      SELECT
-        *
-      FROM
-        users
-      WHERE
-        email=:email
-    ';
+    $query = 'SELECT * FROM users WHERE email=:email AND valid="Y"';
     try {
       $stmt = $db_conn->prepare($query);
       $success = $stmt->execute(array(':email' => $email));
@@ -82,6 +68,10 @@
   // return user if success else alert
   function update_user($avatar, $name, $password) {
     global $path, $user, $db_conn, $pdo_err;
+    $query = 'UPDATE users SET name=:name, modified_at=DEFAULT';
+    $query .= $password ? ', password=:password' : '';
+    $query .= $avatar['name'] ? ', avatar=:avatar' : '';
+    $query .= ' WHERE id=:id';
 
     $data = array(':name' => $name, ':id' => $user['id']);
     if($password) $data[':password'] = password_hash($password, PASSWORD_DEFAULT);
@@ -95,19 +85,6 @@
       move_uploaded_file($avatar['tmp_name'], $folder . $filename);
     }
 
-    $query = '
-      UPDATE
-        users
-      SET
-        name=:name,
-    ';
-    $query .= $password ? 'password=:password,' : '';
-    $query .= $avatar['name'] ? 'avatar=:avatar,' : '';
-    $query .= '
-        modified_at=DEFAULT
-      WHERE
-        id=:id
-    ';
     try {
       $stmt = $db_conn->prepare($query);
       $success = $stmt->execute($data);
@@ -118,6 +95,47 @@
       return $user;
     }
     catch(PDOException) {
+      echo $pdo_err;
+    }
+  }
+
+  // return true if success
+  function create_post($content) {
+    global $user, $db_conn, $pdo_err;
+    $query = 'INSERT INTO posts SET creator=:creator, content=:content';
+    try {
+      $stmt = $db_conn->prepare($query);
+      $success = $stmt->execute(
+        array(
+          ':creator' => $user['id'],
+          ':content' => htmlentities($content)
+        )
+      );
+      if(!$success) echo $pdo_err;
+      return $success;
+    }
+    catch(PDOException)  {
+      echo $pdo_err;
+    }
+  }
+
+  // return posts if success else alert
+  function get_posts($offset, $limit) {
+    global $db_conn, $pdo_err;
+    $query = 'SELECT posts.id, posts.content, posts.modified_at, posts.created_at, users.name AS creator_name, users.avatar AS creator_avatar
+    FROM posts
+    LEFT JOIN users ON posts.creator=users.id
+    WHERE posts.valid="Y"
+    ORDER BY modified_at DESC
+    LIMIT ' . $offset . ', ' . $limit;
+    try {
+      $stmt = $db_conn->prepare($query);
+      $success = $stmt->execute();
+      if(!$success) echo $pdo_err;
+      $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $posts;
+    }
+    catch(PDOException)  {
       echo $pdo_err;
     }
   }
