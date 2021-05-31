@@ -11,6 +11,7 @@
     if(validate_recaptcha($recaptcha_response)) {
       if(validate_user($user['email'], $password)) {
         if(validate_modify_profile($_FILES['avatar'], $name, $new_password, $confirm_new_password)) {
+          // bug
           $user = update_user($_FILES['avatar'], $name, $new_password);
           if($user) {
             $_SESSION['user'] = $user;

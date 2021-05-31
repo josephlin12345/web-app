@@ -75,7 +75,7 @@
   <br>
   <input type="hidden" id="recaptcha_response" name="recaptcha_response">
   <input
-    class="btn submit"
+    class="btn btn-big"
     type="submit"
     name="submit"
     value="提交(Submit)"

@@ -2,8 +2,8 @@
   $title = 'Homepage';
   $path = '';
   require 'templates/header.php';
-?>
 
-<div class="title"><?php echo $title; ?></div>
+  if($user) require 'templates/form/create_post.php';
 
-<?php require 'templates/footer.php'; ?>
+  require 'templates/footer.php';
+ ?>

@@ -27,17 +27,17 @@
           <a href="' . $path . 'user/profile.php">
             <img class="btn avatar" src="' . $path . 'avatars/' . $user['avatar'] . '" alt="' . $user['avatar'] . '">
           </a>
-          <a class="btn option" href="' . $path . 'user/posts.php">' . $user['name'] . '</a>
-          <a class="btn option" href="' . $path . 'logout.php">登出(Logout)</a>
+          <a class="btn btn-small" href="' . $path . 'user/posts.php">' . $user['name'] . '</a>
+          <a class="btn btn-small" href="' . $path . 'logout.php">登出(Logout)</a>
         ';
       }
       else {
         echo '
-          <a class="btn option" href="' . $path . 'login.php">登入(Login)</a>
-          <a class="btn option" href="' . $path . 'sign_up.php">註冊(Sign Up)</a>
+          <a class="btn btn-small" href="' . $path . 'login.php">登入(Login)</a>
+          <a class="btn btn-small" href="' . $path . 'sign_up.php">註冊(Sign Up)</a>
         ';
       }
     ?>
-    <a class="btn option" href="<?php echo $path; ?>about.php">!</a>
+    <a class="btn btn-small" href="<?php echo $path; ?>about.php">!</a>
   </div>
 </nav>

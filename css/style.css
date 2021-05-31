@@ -5,8 +5,10 @@ body {
   --narbar-height: 4rem;
 
   margin: 0;
+  margin-top: var(--narbar-height);
   background-color: var(--background-color);
   color: var(--text-color);
+  transition-property: color, background-color;
   transition-duration: var(--transition-duration);
   font-family: 'Roboto Slab', serif;
   text-align: center;
@@ -21,7 +23,6 @@ body {
   top: 0;
   width: 100%;
   height: var(--narbar-height);
-  z-index: 1;
 }
 
 .logo {
@@ -30,20 +31,18 @@ body {
 }
 
 .title {
-  --title-margin: 2rem;
-
-  margin-top: calc(var(--narbar-height) + var(--title-margin));
-  margin-bottom: var(--title-margin);
+  padding: 1rem 0;
   font-size: 3rem;
 }
 
 .form {
+  margin: 1rem;
   text-align: left;
   display: inline-block;
 }
 
 .form > * {
-  margin: 1rem;
+  margin-bottom: 1rem;
   font-family: inherit;
   font-size: 1.5rem;
 }
@@ -58,17 +57,25 @@ body {
   border: .15rem solid orange;
   border-radius: 5rem;
   color: var(--text-color);
-  transition: all var(--transition-duration);
-  font-size: 1.5rem;
+  transition-property: color, background-color, box-shadow;
+  transition-duration: var(--transition-duration);
   background-color: inherit;
+  white-space: nowrap;
+  float: right;
 }
 
 .btn:hover {
   background-color: orange;
 }
 
-.submit {
+.btn-small {
+  padding: .5rem 1rem;
+  font-size: 1rem;
+}
+
+.btn-big {
   padding: 1rem 2rem;
+  font-size: 1.5rem;
 }
 
 .user-option {
@@ -78,11 +85,6 @@ body {
 
 .user-option > * {
   margin: auto 1rem;
-}
-
-.option {
-  padding: .5rem 1rem;
-  height: 2rem;
 }
 
 .avatar {
@@ -97,4 +99,8 @@ body {
 
 .image {
   width: 10rem;
+}
+
+textarea {
+  resize: none;
 }
