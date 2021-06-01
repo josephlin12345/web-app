@@ -11,9 +11,9 @@
   <br>
   <input type="hidden" id="recaptcha_response" name="recaptcha_response">
   <input
-    class="btn btn-small btn-right"
+    class="btn btn-small right"
     type="submit"
-    name="submit"
+    name="post"
     value="發布(Post)"
   >
 </form>

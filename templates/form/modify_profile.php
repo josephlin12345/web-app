@@ -77,7 +77,7 @@
   <input
     class="btn btn-big"
     type="submit"
-    name="submit"
-    value="提交(Submit)"
+    name="confirm"
+    value="確認(Confirm)"
   >
 </form>

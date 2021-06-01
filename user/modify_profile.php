@@ -4,7 +4,7 @@
   require $path . 'templates/header.php';
   require $path . 'templates/recaptcha.php';
 
-  if($_POST['submit']) {
+  if($_POST['confirm']) {
     require $path . 'functions/validation.php';
 
     extract($_POST);

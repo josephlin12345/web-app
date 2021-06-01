@@ -5,7 +5,7 @@
   if($user) header('Location: homepage.php');
   require 'templates/recaptcha.php';
 
-  if($_POST['submit']) {
+  if($_POST['sign_up']) {
     require 'functions/validation.php';
 
     extract($_POST);

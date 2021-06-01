@@ -1,13 +1,6 @@
-<?php
-  $limit = 3;
-  $offset = 0;
-  $posts = get_posts(0, 3);
-?>
+<script src="<?php echo $path; ?>js/show_more.js" defer></script>
+<script src="<?php echo $path; ?>js/load_posts.js" defer></script>
 
-<div class="posts">
-  <?php
-    foreach($posts as $post) {
-      require 'templates/form/post.php';
-    }
-  ?>
+<div id="posts">
+  <?php require $path . 'templates/form/post.php'; ?>
 </div>

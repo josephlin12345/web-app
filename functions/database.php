@@ -122,12 +122,31 @@
   // return posts if success else alert
   function get_posts($offset, $limit) {
     global $db_conn, $pdo_err;
-    $query = 'SELECT posts.id, posts.content, posts.modified_at, posts.created_at, users.name AS creator_name, users.avatar AS creator_avatar
+    $query = 'SELECT posts.id, posts.content, posts.modified_at, users.name AS creator_name, users.avatar AS creator_avatar
     FROM posts
     LEFT JOIN users ON posts.creator=users.id
     WHERE posts.valid="Y"
     ORDER BY modified_at DESC
     LIMIT ' . $offset . ', ' . $limit;
+    try {
+      $stmt = $db_conn->prepare($query);
+      $success = $stmt->execute();
+      if(!$success) echo $pdo_err;
+      $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $posts;
+    }
+    catch(PDOException)  {
+      echo $pdo_err;
+    }
+  }
+
+  function get_latest_posts($timestamp) {
+    global $db_conn, $pdo_err;
+    $query = 'SELECT posts.id, posts.content, posts.modified_at, users.name AS creator_name, users.avatar AS creator_avatar
+    FROM posts
+    LEFT JOIN users ON posts.creator=users.id
+    WHERE posts.valid="Y" AND posts.modified_at > "' . $timestamp . '"
+    ORDER BY modified_at ASC';
     try {
       $stmt = $db_conn->prepare($query);
       $success = $stmt->execute();

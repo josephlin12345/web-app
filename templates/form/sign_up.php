@@ -65,7 +65,7 @@
   <input
     class="btn btn-big"
     type="submit"
-    name="submit"
+    name="sign_up"
     value="註冊(Sign Up)"
   >
 </form>

@@ -32,7 +32,7 @@
   <input
     class="btn btn-big"
     type="submit"
-    name="submit"
+    name="login"
     value="登入(Login)"
   >
 </form>
