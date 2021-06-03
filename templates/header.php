@@ -22,7 +22,6 @@
 
   <script src="<?php echo $path; ?>js/theme_selector.js" defer></script>
 
-  <?php require $path . 'functions/database.php'; ?>
   <title><?php echo $title; ?></title>
 </head>
 <body class="<?php echo $_COOKIE['theme']; ?>">
