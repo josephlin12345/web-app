@@ -7,6 +7,6 @@
 <div class="title"><?php echo $title; ?></div>
 
 <?php
-  require $path . 'templates/content/about.php';
+  require $path . 'templates/document/about.php';
   require $path . 'templates/footer.php';
 ?>

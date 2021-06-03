@@ -9,5 +9,6 @@
     </div>
     <p class="post-content"></p>
     <button class="btn right" type="button" onclick="">show more</button>
+    <?php if($user) echo '<input class="btn" type="submit" name="comment" value="留言(Comment)">'; ?>
   </form>
 </template>

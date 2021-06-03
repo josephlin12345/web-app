@@ -1,12 +1,11 @@
-<?php // $user = json_decode($_COOKIE['user'], true); ?>
 <?php
   session_start();
-  // $user = $_SESSION['user'];
   extract($_SESSION);
   if(!$user && count(explode('/', $_SERVER['PHP_SELF'], -1)) != 1) {
     header('Location: ' . $path . 'login.php');
     exit;
   }
+  $api_url = 'http://i4010.isrcttu.net:9651/api';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +17,7 @@
   <link rel="stylesheet" href="<?php echo $path; ?>css/style.css">
   <link rel="stylesheet" href="<?php echo $path; ?>css/selector.css">
   <link rel="stylesheet" href="<?php echo $path; ?>css/background.css">
+  <link rel="stylesheet" href="<?php echo $path; ?>css/post.css">
   <link rel="icon" href="<?php echo $path; ?>favicon.png">
 
   <script src="<?php echo $path; ?>js/theme_selector.js" defer></script>

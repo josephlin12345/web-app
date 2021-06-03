@@ -1,13 +1,15 @@
 async function get_posts(offset, limit) {
-  const api_url = `${window.location.origin}/api/get_posts.php?offset=${offset}&limit=${limit}`;
+  const api_url = `http://i4010.isrcttu.net:9651/api/post/get.php?offset=${offset}&limit=${limit}`;
   const response = await fetch(api_url);
-  return await response.json();
+  const data = await response.json();
+  return data['data'];
 }
 
 async function get_latest_posts(timestamp) {
-  const api_url = `${window.location.origin}/api/get_latest_posts.php?timestamp=${timestamp}`;
+  const api_url = `http://i4010.isrcttu.net:9651/api/post/get_latest.php?timestamp=${timestamp}`;
   const response = await fetch(api_url);
-  return await response.json();
+  const data = await response.json();
+  return data['data'];
 }
 
 function decodeHTML(text) {
@@ -26,12 +28,21 @@ function make_post_element(post) {
   return template.content.cloneNode(true);
 }
 
+function check_read_more_button(post_element) {
+  const content = post_element.querySelector('p');
+  if(content.offsetHeight == content.scrollHeight) {
+    const button = post_element.querySelector('button');
+    post_element.removeChild(button);
+  }
+}
+
 function insert_posts(new_posts, append) {
   if(append) {
     for(post of new_posts) {
       const post_element = make_post_element(post);
       post_elements[post['id']] = post_element;
       posts.appendChild(post_element);
+      check_read_more_button(posts.lastElementChild);
     }
   }
   else {
@@ -43,13 +54,14 @@ function insert_posts(new_posts, append) {
       }
       const post_element = make_post_element(post);
       post_elements[post['id']] = post_element;
-      if(posts.children.length > 0) {
+      if(posts.childElementCount > 0) {
         const first_post = posts.children[0];
         first_post.parentNode.insertBefore(post_element, first_post);
       }
       else {
         posts.appendChild(post_element);
       }
+      check_read_more_button(posts.firstElementChild);
     }
   }
 }

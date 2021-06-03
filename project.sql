@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-05-31 03:04:44
+-- 產生時間： 2021-06-02 22:39:39
 -- 伺服器版本： 10.4.19-MariaDB
 -- PHP 版本： 8.0.6
 
@@ -34,7 +34,7 @@ CREATE TABLE `comments` (
   `content` varchar(1000) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `valid` enum('Y','N') NOT NULL DEFAULT 'Y'
+  `valid` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -49,7 +49,7 @@ CREATE TABLE `posts` (
   `content` varchar(1000) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `valid` enum('Y','N') NOT NULL DEFAULT 'Y'
+  `valid` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -66,7 +66,7 @@ CREATE TABLE `users` (
   `password` char(60) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `valid` enum('Y','N') NOT NULL DEFAULT 'Y'
+  `valid` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

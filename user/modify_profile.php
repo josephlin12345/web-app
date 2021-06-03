@@ -2,27 +2,44 @@
   $title = 'Modify Profile';
   $path = '../';
   require $path . 'templates/header.php';
-  require $path . 'templates/recaptcha.php';
 
   if($_POST['confirm']) {
-    require $path . 'functions/validation.php';
-
     extract($_POST);
-    if(validate_recaptcha($recaptcha_response)) {
-      if(validate_user($user['email'], $password)) {
-        if(validate_modify_profile($_FILES['avatar'], $name, $new_password, $confirm_new_password)) {
-          // bug
-          $user = update_user($_FILES['avatar'], $name, $new_password);
-          if($user) {
-            $_SESSION['user'] = $user;
-            // setcookie('user', json_encode($user), time() + 2592000, '/');
-            header('Location: ' . $path . 'user/profile.php');
-            exit;
-          }
-        }
+    $data = array(
+      'user' => $user,
+      'name' => $name,
+      'avatar' => $_FILES['avatar'],
+      'password' => $password,
+      'new_password' => $new_password,
+      'confirm_new_password' => $confirm_new_password,
+      'recaptcha_response' => $recaptcha_response      
+    );
+
+    $ch = curl_init($api_url . '/user/update.php');
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = json_decode(curl_exec($ch), true);
+    curl_close($ch);
+
+    if($response['success']) {
+      if($_FILES['avatar']['name']) {
+        $folder = $path . 'avatars/';
+        $filename = $user['id'] . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+
+        if($user['avatar'] != 'default.png') unlink($folder . $user['avatar']);
+        move_uploaded_file($_FILES['avatar']['tmp_name'], $folder . $filename);
       }
+      $_SESSION['user'] = $response['user'];
+      header('Location: ' . $path . 'user/profile.php');
+      exit;
+    }
+    else {
+      extract($response['error']);
+      if($recaptcha_err) echo '<script>alert("' . $recaptcha_err . '")</script>';
     }
   }
+
+  require $path . 'templates/recaptcha.php';
 ?>
 
 <div class="title"><?php echo $title; ?></div>

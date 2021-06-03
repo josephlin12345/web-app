@@ -2,22 +2,35 @@
   $title = 'Sign Up';
   $path = '';
   require 'templates/header.php';
-  if($user) header('Location: homepage.php');
-  require 'templates/recaptcha.php';
 
   if($_POST['sign_up']) {
-    require 'functions/validation.php';
-
     extract($_POST);
-    if(validate_recaptcha($recaptcha_response)) {
-      if(validate_sign_up($name, $password, $confirm_password, $email)) {
-        if(add_user($name, $password, $email)) {
-          header('Location: login.php');
-          exit;
-        }
-      }
+    $data = array(
+      'name' => $name,
+      'email' => $email,
+      'password' => $password,
+      'confirm_password' => $confirm_password,
+      'recaptcha_response' => $recaptcha_response
+    );
+
+    $ch = curl_init($api_url . '/user/add.php');
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = json_decode(curl_exec($ch), true);
+    curl_close($ch);
+
+    if($response['success']) {
+      header('Location: login.php');
+      exit;
+    }
+    else {
+      extract($response['error']);
+      if($recaptcha_err) echo '<script>alert("' . $recaptcha_err . '")</script>';
     }
   }
+
+  if($user) header('Location: homepage.php');
+  require 'templates/recaptcha.php';
 ?>
 
 <div class="title"><?php echo $title; ?></div>

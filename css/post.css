@@ -1,0 +1,45 @@
+textarea {
+  resize: none;
+  border-radius: .5rem;
+  outline: none;
+}
+
+#posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: left;
+  padding-top: 1rem;
+}
+
+.post {
+  width: 40rem;
+  background-color: var(--second-background-color);
+  padding: 1rem;
+  border-radius: .5rem;
+}
+
+.post-header {
+  display: flex;
+  gap: 1rem;
+}
+
+.post-info {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.post-content {
+  display: -webkit-inline-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-wrap: break-word;
+  width: 100%;
+}
+
+.show-all-content {
+  -webkit-line-clamp: unset;
+}
