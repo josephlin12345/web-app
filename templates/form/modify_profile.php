@@ -1,10 +1,8 @@
-<script src="<?php echo $path; ?>js/image_preview.js" defer></script>
+<script src="<?php echo $path; ?>js/image_handler.js" defer></script>
 <form class="form" action="" method="POST" enctype="multipart/form-data">
-  <label for="image">頭像(Avatar) : 
-    <span><?php echo $avatar_err; ?></span>
-  </label>
+  <label for="image">頭像(Avatar) : </label>
   <br>
-  <img class="image" id="image_preview" src="<?php echo $path . 'avatars/' . $user['avatar']; ?>" alt="<?php echo $user['avatar']; ?>"></img>
+  <img class="image" id="image_preview" src="<?php echo $api_url . '/user/get_avatar.php?id=' . $user['id']; ?>"></img>
   <br>
   <input
     type="file"

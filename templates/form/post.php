@@ -1,7 +1,7 @@
 <template id="post">
   <form class="post" id="" action="" method="POST">
     <div class="post-header">
-      <img class="btn avatar" src="" alt="">
+      <a href=""><img class="btn avatar" src=""></a>
       <div class="post-info">
         <span class="creator-name"></span>
         <span class="modified-at"></span>

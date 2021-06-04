@@ -25,7 +25,7 @@
       if($user) {
         echo '
           <a href="' . $path . 'user/profile.php">
-            <img class="btn avatar" src="' . $path . 'avatars/' . $user['avatar'] . '" alt="' . $user['avatar'] . '">
+            <img class="btn avatar" src="' . $api_url . '/user/get_avatar.php?id=' . $user['id'] . '">
           </a>
           <a class="btn btn-small" href="' . $path . 'user/posts.php">' . $user['name'] . '</a>
           <a class="btn btn-small" href="' . $path . 'logout.php">登出(Logout)</a>

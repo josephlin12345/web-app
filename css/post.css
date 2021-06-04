@@ -11,6 +11,7 @@ textarea {
   gap: 2rem;
   text-align: left;
   padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .post {
