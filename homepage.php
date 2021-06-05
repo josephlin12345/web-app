@@ -27,6 +27,13 @@
     require 'templates/recaptcha.php';
     require 'templates/form/create_post.php';
   }
-  require 'templates/posts.php';
-  require 'templates/footer.php';
 ?>
+
+<script src="<?php echo $path; ?>js/posts.js" defer></script>
+<script src="<?php echo $path; ?>js/load_posts.js" defer></script>
+
+<div id="posts">
+  <?php require $path . 'templates/form/post.php'; ?>
+</div>
+
+<?php require 'templates/footer.php'; ?>

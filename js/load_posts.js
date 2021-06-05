@@ -12,32 +12,6 @@ async function get_latest_posts(timestamp) {
   return data['data'];
 }
 
-function decodeHTML(text) {
-  return text.replace(/&amp;/g, '&').replace(/&quot;/g, '\"').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-}
-
-function make_post_element(post) {
-  const clone = template.content.cloneNode(true);
-  clone.querySelector('form').id = post['id'];
-  clone.querySelector('img').src = `${api_url}/user/get_avatar.php?id=${post['creator_id']}`;
-  clone.querySelector('a').href = `${window.location.origin}/user/posts.php?id=${post['creator_id']}`;
-  clone.querySelector('.creator-name').innerText = post['creator_name'];
-  const modified_at = new Date(post['modified_at']);
-  modified_at.setMinutes(modified_at.getMinutes() - tzoffset);
-  clone.querySelector('.modified-at').innerText = modified_at.toLocaleString();
-  clone.querySelector('.post-content').innerText = decodeHTML(post['content']);
-  clone.querySelector('button').setAttribute('onClick', `show_more(${post['id']})`);
-  return clone;
-}
-
-function check_read_more_button(post_element) {
-  const content = post_element.querySelector('.post-content');
-  if(content.offsetHeight == content.scrollHeight) {
-    const button = post_element.querySelector('button');
-    post_element.removeChild(button);
-  }
-}
-
 function insert_posts(posts, append) {
   const post_ids = Object.keys(post_elements);
   for(post of posts) {
@@ -76,17 +50,8 @@ async function load_latest_posts() {
   }
 }
 
-const api_url = 'http://i4010.isrcttu.net:9651/api';
-let offset = 0;
-const limit = 5;
-let loading = false;
-let stop_loading = false;
 const post_elements = {};
-const tzoffset = (new Date()).getTimezoneOffset();
 let latest_post_time = (new Date()).toISOString();
-
-const posts_element = document.getElementById('posts');
-const template = document.getElementById('post');
 
 setInterval(load_latest_posts, 60000);
 
