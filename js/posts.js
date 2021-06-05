@@ -16,7 +16,7 @@ function make_post_element(post) {
   const clone = template.content.cloneNode(true);
   clone.querySelector('form').id = post['id'];
   clone.querySelector('img').src = `${api_url}/user/get_avatar.php?id=${post['creator_id']}`;
-  clone.querySelector('a').href = `${window.location.origin}/user/posts.php?id=${post['creator_id']}`;
+  clone.querySelector('a').href = `${window.location.origin}/app/user/posts.php?id=${post['creator_id']}`;
   clone.querySelector('.creator-name').innerText = post['creator_name'];
   const modified_at = new Date(post['modified_at']);
   modified_at.setMinutes(modified_at.getMinutes() - tzoffset);

@@ -1,7 +1,7 @@
 <?php
   $title = 'About';
   $path = '';
-  require $path . 'templates/header.php';
+  require 'templates/header.php';
 ?>
 
 <div class="title"><?php echo $title; ?></div>
@@ -12,4 +12,4 @@
   <p>I3B24 林浚喆 : 其他</p>
 </div>
 
-<?php require $path . 'templates/footer.php'; ?>
+<?php require 'templates/footer.php'; ?>

@@ -1,7 +1,7 @@
 <?php
   session_start();
   extract($_SESSION);
-  if(!$user && count(explode('/', $_SERVER['PHP_SELF'], -1)) != 1) {
+  if(!$user && count(explode('/', $_SERVER['PHP_SELF'], -1)) != 2) {
     header('Location: ' . $path . 'login.php');
     exit;
   }

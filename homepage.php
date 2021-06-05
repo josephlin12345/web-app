@@ -29,11 +29,11 @@
   }
 ?>
 
-<script src="<?php echo $path; ?>js/posts.js" defer></script>
-<script src="<?php echo $path; ?>js/load_homepage_posts.js" defer></script>
+<script src="js/posts.js" defer></script>
+<script src="js/load_homepage_posts.js" defer></script>
 
 <div id="posts">
-  <?php require $path . 'templates/form/post.php'; ?>
+  <?php require 'templates/form/post.php'; ?>
 </div>
 
 <?php require 'templates/footer.php'; ?>
