@@ -1,13 +1,13 @@
 <?php
   session_start();
-  extract($_SESSION);
+  $user = $_SESSION['user'];
   // change from 2 to 1
   if(!$user && count(explode('/', $_SERVER['PHP_SELF'], -1)) != 2) {
     header('Location: ' . $path . 'login.php');
     exit;
   }
-  $lang = isset($_COOKIE['lang']) ? $_COOKIE['lang'] : 'en';
   require $path . 'templates/lang.php';
+  $lang = isset($_COOKIE['lang']) ? $_COOKIE['lang'] : 'en';
   $api_url = 'http://i4010.isrcttu.net:9651/api';
 ?>
 <!DOCTYPE html>

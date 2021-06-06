@@ -7,11 +7,11 @@ function getCookie(name) {
 const text = {
   'show comments': {
     'en': 'Show Comments',
-    'zh-Hant-TW': '顯示留言'
+    'zh-TW': '顯示留言'
   },
   'close comments': {
     'en': 'Close Comments',
-    'zh-Hant-TW': '關閉留言'
+    'zh-TW': '關閉留言'
   }
 };
 const lang = getCookie('lang') || 'en';

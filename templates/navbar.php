@@ -21,7 +21,7 @@
       <?php
         $lang_list = array(
           'en' => 'english',
-          'zh-Hant-TW' => '中文(繁體)'
+          'zh-TW' => '中文(繁體)'
         );
         foreach($lang_list as $lang_type => $lang_name) {
           if($_COOKIE['lang'] != $lang_type) echo '<option value="' . $lang_type . '">' . $lang_name . '</option>';
