@@ -1,5 +1,5 @@
 <?php
-  $title = 'Modify Profile';
+  $title = 'modify profile';
   $path = '../';
   require $path . 'templates/header.php';
 
@@ -44,7 +44,7 @@
   require $path . 'templates/recaptcha.php';
 ?>
 
-<div class="title"><?php echo $title; ?></div>
+<div class="title"><?php echo $text[$title][$lang]; ?></div>
 
 <?php
   require $path . 'templates/form/modify_profile.php';

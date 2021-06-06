@@ -43,7 +43,7 @@ function show_comments(post_id) {
   const button = post.querySelector('[name="comments"]');
   const hidden = comments.classList.toggle('hidden');
   if(!hidden) {
-    button.innerText = 'Close Comments';
+    button.innerText = text['close comments'][lang];
     const textarea = document.getElementById(`textarea-${post_id}`);
     if(textarea) textarea.focus();
 
@@ -65,7 +65,7 @@ function show_comments(post_id) {
   }
   else {
     clearInterval(loaded_comments[post_id]['interval']);
-    button.innerText = 'Show Comments';
+    button.innerText = text['show comments'][lang];
   }
 }
 

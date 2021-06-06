@@ -1,5 +1,5 @@
 <?php
-  $title = 'Posts';
+  $title = 'user posts';
   $path = '../';
   require $path . 'templates/header.php';
   require $path . 'templates/recaptcha.php';

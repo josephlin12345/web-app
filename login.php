@@ -1,5 +1,5 @@
 <?php
-  $title = 'Login';
+  $title = 'login';
   $path = '';
   require 'templates/header.php';
 
@@ -32,7 +32,7 @@
   require 'templates/recaptcha.php';
 ?>
 
-<div class="title"><?php echo $title; ?></div>
+<div class="title"><?php echo $text[$title][$lang]; ?></div>
 
 <?php
   require 'templates/form/login.php';

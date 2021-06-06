@@ -16,6 +16,7 @@ body {
   --narbar-height: 4rem;
   --content-width: 40rem;
   --divider-border: 1px solid lightgreen;
+  --sub-color: orange;
 
   margin: 0;
   margin-top: var(--narbar-height);
@@ -32,6 +33,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   position: fixed;
   top: 0;
   width: 100%;
@@ -68,7 +70,7 @@ body {
 .btn {
   cursor: pointer;
   text-decoration: none;
-  border: .1rem solid orange !important;
+  border: .1rem solid var(--sub-color) !important;
   border-radius: 5rem;
   color: var(--text-color);
   transition-property: color, background-color, box-shadow;
@@ -78,7 +80,7 @@ body {
 }
 
 .btn:hover {
-  background-color: orange;
+  background-color: var(--sub-color);
 }
 
 .btn-small {

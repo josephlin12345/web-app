@@ -1,18 +1,18 @@
 <?php
-  $title = 'Profile';
+  $title = 'profile';
   $path = '../';
   require $path . 'templates/header.php';
 ?>
 
-<div class="title"><?php echo $title; ?></div>
+<div class="title"><?php echo $text[$title][$lang]; ?></div>
 <div class="form">
   <img class="image" src="<?php echo $api_url . '/user/get_avatar.php?id=' . $user['id']; ?>"></img>
-  <p>名稱(Name) : <?php echo $user['name']; ?></p>
-  <p>電子郵件(Email) : <?php echo $user['email']; ?></p>
-  <p>最後修改時間(Last Modified) : <?php echo $user['modified_at'] . ' UTC+0'; ?></p>
-  <p>建立時間(Create Time) : <?php echo $user['created_at'] . ' UTC+0'; ?></p>
+  <p><?php echo $text['name'][$lang] . ' : ' . $user['name']; ?></p>
+  <p><?php echo $text['email'][$lang] . ' : ' . $user['email']; ?></p>
+  <p><?php echo $text['last modified at'][$lang] . ' : ' . $user['modified_at'] . ' UTC+0'; ?></p>
+  <p><?php echo $text['create time'][$lang] . ' : ' . $user['created_at'] . ' UTC+0'; ?></p>
   <br>
-  <a class="btn btn-big" href="<?php echo $path; ?>user/modify_profile.php">修改資料(Modify Profile)</a>
+  <a class="btn btn-big" href="<?php echo $path; ?>user/modify_profile.php"><?php echo $text['modify profile'][$lang]; ?></a>
 </div>
 
 <?php require $path . 'templates/footer.php'; ?>

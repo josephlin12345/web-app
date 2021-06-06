@@ -6,10 +6,12 @@
     header('Location: ' . $path . 'login.php');
     exit;
   }
+  $lang = isset($_COOKIE['lang']) ? $_COOKIE['lang'] : 'en';
+  require $path . 'templates/lang.php';
   $api_url = 'http://i4010.isrcttu.net:9651/api';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $lang; ?>">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,9 +23,10 @@
   <link rel="stylesheet" href="<?php echo $path; ?>css/content.css">
   <link rel="icon" href="<?php echo $path; ?>favicon.png">
 
-  <script src="<?php echo $path; ?>js/theme_selector.js" defer></script>
+  <script src="<?php echo $path; ?>js/lang.js" defer></script>
+  <script src="<?php echo $path; ?>js/selector.js" defer></script>
 
-  <title><?php echo $title; ?></title>
+  <title><?php echo $text[$title][$lang]; ?></title>
 </head>
 <body class="<?php echo $_COOKIE['theme']; ?>">
   <?php require $path . 'templates/navbar.php'; ?>

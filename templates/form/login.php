@@ -1,5 +1,5 @@
 <form class="form" action="" method="POST">
-  <label for="email">電子郵件(Email) : 
+  <label for="email"><?php echo $text['email'][$lang]; ?> : 
     <span class="hint"><?php echo $email_err; ?></span>
   </label>
   <br>
@@ -14,7 +14,7 @@
     autofocus
   >
   <br>
-  <label for="password">密碼(Password) : 
+  <label for="password"><?php echo $text['password'][$lang]; ?> : 
     <span class="hint"><?php echo $password_err; ?></span>
   </label>
   <br>
@@ -33,6 +33,6 @@
     class="btn btn-big"
     type="submit"
     name="login"
-    value="登入(Login)"
+    value="<?php echo $text['login'][$lang]; ?>"
   >
 </form>

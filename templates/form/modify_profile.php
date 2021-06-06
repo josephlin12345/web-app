@@ -1,6 +1,6 @@
 <script src="<?php echo $path; ?>js/image_handler.js" defer></script>
 <form class="form" action="" method="POST" enctype="multipart/form-data">
-  <label for="image">頭像(Avatar) : </label>
+  <label for="image"><?php echo $text['avatar'][$lang]; ?> : </label>
   <br>
   <img class="image" id="image_preview" src="<?php echo $api_url . '/user/get_avatar.php?id=' . $user['id']; ?>"></img>
   <br>
@@ -11,7 +11,7 @@
     accept=".jpg, .jpeg, .png, .gif"
   >
   <br>
-  <label for="name">名稱(Name) : 
+  <label for="name"><?php echo $text['name'][$lang]; ?> : 
     <span class="hint">* <?php echo $name_err; ?></span>
   </label>
   <br>
@@ -20,7 +20,7 @@
     name="name"
     id="name"
     value="<?php echo $user['name']; ?>"
-    placeholder="需介於於3 - 20個字 (Must between 3 - 20 characters)"
+    placeholder="<?php echo $text['must between'][$lang] . ' 3 - 20 ' . $text['characters'][$lang]; ?>"
     minlength="3"
     maxlength="20"
     size="40"
@@ -28,7 +28,7 @@
     autofocus
   >
   <br>
-  <label for="password">密碼(Password) : 
+  <label for="password"><?php echo $text['password'][$lang]; ?> : 
     <span class="hint">* <?php echo $password_err; ?></span>
   </label>
   <br>
@@ -36,14 +36,14 @@
     type="password"
     name="password"
     id="password"
-    placeholder="需介於於5 - 20個字 (Must between 5 - 20 characters)"
+    placeholder="<?php echo $text['must between'][$lang] . ' 5 - 20 ' . $text['characters'][$lang]; ?>"
     minlength="5"
     maxlength="20"
     size="40"
     required
   >
   <br>
-  <label for="new_password">新密碼(New Password) : 
+  <label for="new_password"><?php echo $text['new'][$lang] . ' ' . $text['password'][$lang]; ?> : 
     <span class="hint"><?php echo $new_password_err; ?></span>
   </label>
   <br>
@@ -51,13 +51,13 @@
     type="password"
     name="new_password"
     id="new_password"
-    placeholder="需介於於5 - 20個字 (Must between 5 - 20 characters)"
+    placeholder="<?php echo $text['must between'][$lang] . ' 5 - 20 ' . $text['characters'][$lang]; ?>"
     minlength="5"
     maxlength="20"
     size="40"
   >
   <br>
-  <label for="confirm_new_password">確認新密碼(Confirm New Password) : 
+  <label for="confirm_new_password"><?php echo $text['confirm'][$lang] . ' ' . $text['new'][$lang] . ' ' . $text['password'][$lang]; ?> : 
     <span class="hint"><?php echo $confirm_new_password_err; ?></span>
   </label>
   <br>
@@ -65,7 +65,7 @@
     type="password"
     name="confirm_new_password"
     id="confirm_new_password"
-    placeholder="需介於於5 - 20個字 (Must between 5 - 20 characters)"
+    placeholder="<?php echo $text['must between'][$lang] . ' 5 - 20 ' . $text['characters'][$lang]; ?>"
     minlength="5"
     maxlength="20"
     size="40"
@@ -76,6 +76,6 @@
     class="btn btn-big"
     type="submit"
     name="confirm"
-    value="確認(Confirm)"
+    value="<?php echo $text['confirm'][$lang]; ?>"
   >
 </form>

@@ -1,5 +1,5 @@
 <?php
-  $title = 'Homepage';
+  $title = 'homepage';
   $path = '';
   require 'templates/header.php';
 

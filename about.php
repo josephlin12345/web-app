@@ -1,10 +1,10 @@
 <?php
-  $title = 'About';
+  $title = 'about';
   $path = '';
   require 'templates/header.php';
 ?>
 
-<div class="title"><?php echo $title; ?></div>
+<div class="title"><?php echo $text[$title][$lang]; ?></div>
 <div class="form">
   <p>成員及工作分配</p>
   <p>I3B09 沈大中 : 提供意見、查資料</p>

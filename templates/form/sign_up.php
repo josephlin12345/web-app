@@ -1,5 +1,5 @@
 <form class="form" action="" method="POST">
-  <label for="name">名稱(Name) : 
+  <label for="name"><?php echo $text['name'][$lang]; ?> : 
     <span class="hint">* <?php echo $name_err; ?></span>
   </label>
   <br>
@@ -8,7 +8,7 @@
     name="name"
     id="name"
     value="<?php echo $name; ?>"
-    placeholder="需介於於3 - 20個字 (Must between 3 - 20 characters)"
+    placeholder="<?php echo $text['must between'][$lang] . ' 3 - 20 ' . $text['characters'][$lang]; ?>"
     minlength="3"
     maxlength="20"
     size="40"
@@ -16,7 +16,7 @@
     autofocus
   >
   <br>
-  <label for="password">密碼(Password) : 
+  <label for="password"><?php echo $text['password'][$lang]; ?> : 
     <span class="hint">* <?php echo $password_err; ?></span>
   </label>
   <br>
@@ -24,14 +24,14 @@
     type="password"
     name="password"
     id="password"
-    placeholder="需介於於5 - 20個字 (Must between 5 - 20 characters)"
+    placeholder="<?php echo $text['must between'][$lang] . ' 5 - 20 ' . $text['characters'][$lang]; ?>"
     minlength="5"
     maxlength="20"
     size="40"
     required
   >
   <br>
-  <label for="confirm_password">確認密碼(Confirm Password) : 
+  <label for="confirm_password"><?php echo $text['confirm'][$lang] . ' ' . $text['password'][$lang]; ?> : 
     <span class="hint">* <?php echo $confirm_password_err; ?></span>
   </label>
   <br>
@@ -39,14 +39,14 @@
     type="password"
     name="confirm_password"
     id="confirm_password"
-    placeholder="需介於於5 - 20個字 (Must between 5 - 20 characters)"
+    placeholder="<?php echo $text['must between'][$lang] . ' 5 - 20 ' . $text['characters'][$lang]; ?>"
     minlength="5"
     maxlength="20"
     size="40"
     required
   >
   <br>
-  <label for="email">電子郵件(Email) : 
+  <label for="email"><?php echo $text['email'][$lang]; ?> : 
     <span class="hint">* <?php echo $email_err; ?></span>
   </label>
   <br>
@@ -55,7 +55,7 @@
     name="email"
     id="email"
     value="<?php echo $email; ?>"
-    placeholder="需少於254個字 (Must less than 254 characters)"
+    placeholder="<?php echo $text['must less than'][$lang] . ' 254 ' . $text['characters'][$lang]; ?>"
     maxlength="254"
     size="40"
     required
@@ -66,6 +66,6 @@
     class="btn btn-big"
     type="submit"
     name="sign_up"
-    value="註冊(Sign Up)"
+    value="<?php echo $text['sign up'][$lang]; ?>"
   >
 </form>

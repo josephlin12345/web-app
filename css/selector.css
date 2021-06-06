@@ -20,7 +20,7 @@ select {
 }
 
 .selector:hover::after {
-  color: orange;
+  color: var(--sub-color);
 }
 
 .selector::after {

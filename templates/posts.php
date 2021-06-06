@@ -18,16 +18,16 @@
         </div>
       </div>
       <p class="content"></p>
-      <button class="btn right" onclick="" name="show_more">Show More</button>
-      <button class="btn" onclick="" name="comments">Show Comments</button>
+      <button class="btn right" onclick="" name="show_more"><?php echo $text['show more'][$lang]; ?></button>
+      <button class="btn" onclick="" name="comments"><?php echo $text['show comments'][$lang]; ?></button>
       <div class="comments container hidden">
         <?php if($user) { ?>
         <div class="form">
           <textarea class="create-comment" id="" maxlength="1000"></textarea>
-          <button class="btn btn-small right" onclick="" name="create_comment">評論(Comment)</button>
+          <button class="btn btn-small right" onclick="" name="create_comment"><?php echo $text['comment'][$lang]; ?></button>
         </div>
         <?php }; ?>
-        <button class="btn hidden" onclick="" name="load_more_comments">Load More Comments</button>
+        <button class="btn hidden" onclick="" name="load_more_comments"><?php echo $text['load more comments'][$lang]; ?></button>
       </div>
     </div>
   </template>
