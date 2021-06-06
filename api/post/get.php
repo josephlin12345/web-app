@@ -4,8 +4,8 @@
   header('Access-Control-Allow-Methods: GET');
 
   $response = array();
-  if(!(isset($_GET['offset']) && isset($_GET['limit']))) {
-    $response['error'] = 'Missing offset or limit!';
+  if(!(isset($_GET['timestamp']) && isset($_GET['offset']) && isset($_GET['limit']))) {
+    $response['error'] = 'Missing timestamp, offset or limit!';
     echo json_encode($response);
     return;
   }
@@ -17,7 +17,7 @@
   $db_conn = $database->connect();
 
   $post_api = new Post($db_conn);
-  $result = $post_api->get($_GET['offset'], $_GET['limit']);
+  $result = $post_api->get($_GET['timestamp'], $_GET['offset'], $_GET['limit']);
   $response['data'] = $result;
 
   echo json_encode($response);

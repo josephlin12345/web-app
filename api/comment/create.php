@@ -7,7 +7,7 @@
   try {
     $data = json_decode(file_get_contents('php://input'), true);
     extract($data);
-    if(!(isset($creator_id) && isset($content) && isset($recaptcha_response))) {
+    if(!(isset($creator_id) && isset($post_id) && isset($content) && isset($recaptcha_response))) {
       throw new Exception();
     }
   }
@@ -28,13 +28,13 @@
   }
 
   require '../config/database.php';
-  require '../models/Post.php';
+  require '../models/Comment.php';
 
   $database = new Database();
   $db_conn = $database->connect();
 
-  $post_api = new Post($db_conn);
-  $success = $post_api->create($creator_id, $content);
+  $comment_api = new Comment($db_conn);
+  $success = $comment_api->create($creator_id, $post_id, $content);
   $response['success'] = $success;
 
   echo json_encode($response);

@@ -2,37 +2,43 @@ textarea {
   resize: none;
   border-radius: .5rem;
   outline: none;
+  width: var(--content-width);
+  height: 4rem;
+  font-family: inherit;
 }
 
-#posts {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
   text-align: left;
+}
+
+#posts {
+  gap: 2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
 .post {
-  width: 40rem;
+  width: var(--content-width);
   background-color: var(--second-background-color);
   padding: 1rem;
   border-radius: .5rem;
 }
 
-.post-header {
+.content-header {
   display: flex;
   gap: 1rem;
 }
 
-.post-info {
+.content-info {
   display: flex;
   flex-direction: column;
   gap: .5rem;
 }
 
-.post-content {
+.content {
   display: -webkit-inline-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -43,4 +49,19 @@ textarea {
 
 .show-all-content {
   -webkit-line-clamp: unset;
+}
+
+.comments > * {
+  border-bottom: var(--divider-border);
+}
+
+.comments {
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: var(--divider-border);
+}
+
+.comment {
+  width: var(--content-width);
 }

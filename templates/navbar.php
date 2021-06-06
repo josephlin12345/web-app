@@ -10,12 +10,8 @@
           'dark' => '深色(dark)'
         );
         foreach($theme_list as $theme => $theme_name) {
-          if($_COOKIE['theme'] != $theme) {
-            echo '<option value="' . $theme . '">' . $theme_name . '</option>';
-          }
-          else {
-            echo '<option value="' . $theme . '" selected>' . $theme_name . '</option>';
-          }
+          if($_COOKIE['theme'] != $theme) echo '<option value="' . $theme . '">' . $theme_name . '</option>';
+          else echo '<option value="' . $theme . '" selected>' . $theme_name . '</option>';
         }
       ?>
     </select>

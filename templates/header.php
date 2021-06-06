@@ -1,6 +1,7 @@
 <?php
   session_start();
   extract($_SESSION);
+  // change from 2 to 1
   if(!$user && count(explode('/', $_SERVER['PHP_SELF'], -1)) != 2) {
     header('Location: ' . $path . 'login.php');
     exit;
@@ -17,7 +18,7 @@
   <link rel="stylesheet" href="<?php echo $path; ?>css/style.css">
   <link rel="stylesheet" href="<?php echo $path; ?>css/selector.css">
   <link rel="stylesheet" href="<?php echo $path; ?>css/background.css">
-  <link rel="stylesheet" href="<?php echo $path; ?>css/post.css">
+  <link rel="stylesheet" href="<?php echo $path; ?>css/content.css">
   <link rel="icon" href="<?php echo $path; ?>favicon.png">
 
   <script src="<?php echo $path; ?>js/theme_selector.js" defer></script>

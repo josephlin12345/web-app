@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-06-04 18:00:03
+-- 產生時間： 2021-06-05 22:17:04
 -- 伺服器版本： 10.4.19-MariaDB
 -- PHP 版本： 8.0.6
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
-  `creator` int(11) NOT NULL,
+  `creator_id` int(11) NOT NULL,
   `content` varchar(1000) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -45,7 +45,7 @@ CREATE TABLE `comments` (
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
-  `creator` int(11) NOT NULL,
+  `creator_id` int(11) NOT NULL,
   `content` varchar(1000) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -80,14 +80,14 @@ CREATE TABLE `users` (
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `post_id` (`post_id`),
-  ADD KEY `creator` (`creator`);
+  ADD KEY `creator` (`creator_id`);
 
 --
 -- 資料表索引 `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `creator` (`creator`);
+  ADD KEY `creator` (`creator_id`);
 
 --
 -- 資料表索引 `users`
@@ -127,13 +127,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`creator`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`);
 
 --
 -- 資料表的限制式 `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`creator`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

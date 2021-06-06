@@ -1,8 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #dedede;
+}
+
 body {
   --transition-duration: .3s;
   --narbar-height: 4rem;
+  --content-width: 40rem;
+  --divider-border: 1px solid lightgreen;
 
   margin: 0;
   margin-top: var(--narbar-height);
@@ -23,7 +36,7 @@ body {
   top: 0;
   width: 100%;
   height: var(--narbar-height);
-  border-bottom: 1px solid lightgreen;
+  border-bottom: var(--divider-border);
 }
 
 .logo {
@@ -55,7 +68,7 @@ body {
 .btn {
   cursor: pointer;
   text-decoration: none;
-  border: .15rem solid orange;
+  border: .1rem solid orange !important;
   border-radius: 5rem;
   color: var(--text-color);
   transition-property: color, background-color, box-shadow;
@@ -76,6 +89,13 @@ body {
 .btn-big {
   padding: 1rem 2rem;
   font-size: 1.5rem;
+}
+
+.hidden {
+  visibility: hidden !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .right {
