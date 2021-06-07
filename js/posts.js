@@ -92,7 +92,7 @@ async function load_posts(load_type) {
   let url = `${api_url}/post/`;
   switch(load_type) {
     case 'user':
-      url += `get_user.php?user_id=${user_id}&offset=${offset}&limit=${post_limit}`;
+      url += `get_user.php?user_id=${load_user_id}&offset=${offset}&limit=${post_limit}`;
       break;
     case 'latest':
       url += `get_latest.php?timestamp=${latest_post_time}&limit=${post_limit}`;
@@ -117,7 +117,8 @@ async function load_posts(load_type) {
   loading = false;
 }
 
-function set_load_options(id, type) {
+function set_load_options(load_id, id, type) {
+  load_user_id = load_id;
   user_id = id;
   load_type = type;
 }
@@ -136,6 +137,7 @@ date.setSeconds(date.getSeconds() + 50);
 const now = date.toISOString();
 
 let user_id = null;
+let load_user_id = null;
 let load_type = null;
 let offset = 0;
 let loading = false;

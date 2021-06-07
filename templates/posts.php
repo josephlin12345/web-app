@@ -2,7 +2,7 @@
 <script src="<?php echo $path; ?>js/comments.js" defer></script>
 <script>
   window.addEventListener('DOMContentLoaded', () => {
-    set_load_options('<?php echo $user_id; ?>', '<?php echo $load_type; ?>');
+    set_load_options('<?php echo $load_user_id; ?>', '<?php echo $user['id']; ?>', '<?php echo $load_type; ?>');
   });
 </script>
 
