@@ -8,7 +8,8 @@
     $data = array(
       'email' => $email,
       'password' => $password,
-      'recaptcha_response' => $recaptcha_response
+      'recaptcha_response' => $recaptcha_response,
+      'lang' => $lang
     );
 
     $ch = curl_init($api_url . '/user/login.php');

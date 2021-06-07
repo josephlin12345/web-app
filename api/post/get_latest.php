@@ -4,8 +4,10 @@
   header('Access-Control-Allow-Methods: GET');
 
   $response = array();
+  require '../config/lang.php';
+
   if(!(isset($_GET['timestamp']) && isset($_GET['limit']))) {
-    $response['error'] = 'Missing timestamp or limit!';
+    $response['error'] = $text['missing data'][$lang];
     echo json_encode($response);
     return;
   }

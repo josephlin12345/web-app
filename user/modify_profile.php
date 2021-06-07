@@ -13,7 +13,8 @@
       'password' => $password,
       'new_password' => $new_password,
       'confirm_new_password' => $confirm_new_password,
-      'recaptcha_response' => $recaptcha_response      
+      'recaptcha_response' => $recaptcha_response,
+      'lang' => $lang
     );
     if(!$_FILES['avatar']['error']) {
       extract($_FILES);

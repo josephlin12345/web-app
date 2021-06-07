@@ -4,6 +4,7 @@ function getCookie(name) {
   if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
+const allowed_lang = ['en', 'zh-TW'];
 const text = {
   'show comments': {
     'en': 'Show Comments',
@@ -14,4 +15,5 @@ const text = {
     'zh-TW': '關閉留言'
   }
 };
-const lang = getCookie('lang') || 'en';
+let lang = getCookie('lang');
+if(!allowed_lang.includes(lang)) lang = 'en';

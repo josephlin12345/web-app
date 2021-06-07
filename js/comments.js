@@ -6,6 +6,7 @@ function create_comment(post_id) {
       post_id: post_id,
       content: content,
       recaptcha_response: document.getElementById('recaptcha_response').value,
+      lang: lang
     };
     fetch(`${api_url}/comment/create.php`, {
       method: 'POST',

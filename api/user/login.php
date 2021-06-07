@@ -4,15 +4,12 @@
   header('Access-Control-Allow-Methods: POST');
 
   $response = array();
-  try {
-    $data = json_decode(file_get_contents('php://input'), true);
-    extract($data);
-    if(!(isset($email) && isset($password) && isset($recaptcha_response))) {
-      throw new Exception();
-    }
-  }
-  catch(Exception $e) {
-    $response['error'] = 'Missing post data!';
+  $data = json_decode(file_get_contents('php://input'), true);
+  extract($data);
+  require '../config/lang.php';
+
+  if(!(isset($email) && isset($password) && isset($recaptcha_response))) {
+    $response['error'] = $text['missing data'][$lang];
     echo json_encode($response);
     return;
   }
@@ -21,7 +18,7 @@
 
   $error = array();
   if(!validate_recaptcha($recaptcha_response)) {
-    $error['recaptcha_err'] = '未通過驗證(Did not pass recaptcha) !';
+    $error['recaptcha_err'] = $text['did not pass recaptcha'][$lang];
     $response['error'] = $error;
     echo json_encode($response);
     return;
@@ -39,15 +36,15 @@
   if($result) {
     if($result['valid']) {
       if(!password_verify($password, $result['password'])) {
-        $error['password_err'] = '密碼錯誤(Password Error) !';
+        $error['password_err'] = $text['wrong password'][$lang];
       }
     }
     else {
-      $error['email_err'] = '帳號已被刪除(Account has been deleted) !';
+      $error['email_err'] = $text['account has been deleted'][$lang];
     }
   }
   else {
-    $error['email_err'] = '尚未註冊的電子郵件(Did not Sign Up) !';
+    $error['email_err'] = $text['did not sign up'][$lang];
   }
 
   if(count($error) == 0) $response['user'] = $result;

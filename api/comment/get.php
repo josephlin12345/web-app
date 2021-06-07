@@ -4,8 +4,10 @@
   header('Access-Control-Allow-Methods: GET');
 
   $response = array();
+  require '../config/lang.php';
+
   if(!(isset($_GET['post_id']) && isset($_GET['timestamp']) && isset($_GET['offset']) && isset($_GET['limit']))) {
-    $response['error'] = 'Missing post_id, timestamp, offset or limit!';
+    $response['error'] = $text['missing data'][$lang];
     echo json_encode($response);
     return;
   }

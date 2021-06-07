@@ -5,6 +5,7 @@ function create_post(user_id) {
       creator_id: user_id,
       content: content,
       recaptcha_response: document.getElementById('recaptcha_response').value,
+      lang: lang
     };
     fetch(`${api_url}/post/create.php`, {
       method: 'POST',

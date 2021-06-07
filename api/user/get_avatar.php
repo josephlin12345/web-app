@@ -5,7 +5,8 @@
 
   if(!(isset($_GET['id']))) {
     header('Content-Type: application/json');
-    $response = array('error' => 'Missing id!');
+    require '../config/lang.php';
+    $response = array('error' => $text['missing data'][$lang]);
     echo json_encode($response);
     return;
   }

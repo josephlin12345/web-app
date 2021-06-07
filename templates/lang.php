@@ -1,4 +1,7 @@
 <?php
+  $allowed_lang = array('en', 'zh-TW');
+  if(in_array($_COOKIE['lang'], $allowed_lang)) $lang = $_COOKIE['lang'];
+  else $lang = 'en';
   $text = array(
     'login' => array(
       'en' => 'Login',

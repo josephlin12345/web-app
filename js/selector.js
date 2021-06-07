@@ -11,5 +11,5 @@ const lang_selector = document.getElementById('lang-selector');
 lang_selector.addEventListener('change', e => {
   const lang = e.target.value;
   document.cookie = `lang=${lang}; max-age=2592000; path=/`;
-  window.location.reload();
+  window.location = window.location.href;
 });

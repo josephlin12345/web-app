@@ -4,15 +4,12 @@
   header('Access-Control-Allow-Methods: POST');
 
   $response = array();
-  try {
-    $data = json_decode(file_get_contents('php://input'), true);
-    extract($data);
-    if(!(isset($name) && isset($email) && isset($password) && isset($confirm_password) && isset($recaptcha_response))) {
-      throw new Exception();
-    }
-  }
-  catch(Exception $e) {
-    $response['error'] = 'Missing post data!';
+  $data = json_decode(file_get_contents('php://input'), true);
+  extract($data);
+  require '../config/lang.php';
+
+  if(!(isset($name) && isset($email) && isset($password) && isset($confirm_password) && isset($recaptcha_response))) {
+    $response['error'] = $text['missing data'][$lang];
     echo json_encode($response);
     return;
   }
@@ -21,16 +18,16 @@
 
   $error = array();
   if(!validate_recaptcha($recaptcha_response)) {
-    $error['recaptcha_err'] = '未通過驗證(Did not pass recaptcha) !';
+    $error['recaptcha_err'] = $text['did not pass recaptcha'][$lang];
     $response['error'] = $error;
     echo json_encode($response);
     return;
   }
 
-  if(!validate_xss($name)) $error['name_err'] = '不合法的名稱(Invalid Name) !';
-  if(!validate_xss($password)) $error['password_err'] = '不合法的密碼(Invalid Password) !';
-  if($password != $confirm_password) $error['confirm_password_err'] = '密碼不一致(Different Password) !';
-  if(!filter_var($email, FILTER_VALIDATE_EMAIL)) $error['email_err'] = '不合法的電子郵件(Invalid Email) !';
+  if(!validate_xss($name)) $error['name_err'] = $text['invalid name'][$lang];
+  if(!validate_xss($password)) $error['password_err'] = $text['invalid password'][$lang];
+  if($password != $confirm_password) $error['confirm_password_err'] = $text['different password'][$lang];
+  if(!filter_var($email, FILTER_VALIDATE_EMAIL)) $error['email_err'] = $text['invalid email'][$lang];
   else {
     require '../config/database.php';
     require '../models/User.php';
@@ -39,7 +36,7 @@
     $db_conn = $database->connect();
 
     $user_api = new User($db_conn);
-    if($user_api->get($email)) $error['email_err'] = '電子郵件已註冊過(Email already signed up) !';
+    if($user_api->get($email)) $error['email_err'] = $text['email has been signed up'][$lang];
   }
 
   if(count($error) == 0) {

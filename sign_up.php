@@ -10,7 +10,8 @@
       'email' => $email,
       'password' => $password,
       'confirm_password' => $confirm_password,
-      'recaptcha_response' => $recaptcha_response
+      'recaptcha_response' => $recaptcha_response,
+      'lang' => $lang
     );
 
     $ch = curl_init($api_url . '/user/add.php');

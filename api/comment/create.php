@@ -4,15 +4,12 @@
   header('Access-Control-Allow-Methods: POST');
 
   $response = array();
-  try {
-    $data = json_decode(file_get_contents('php://input'), true);
-    extract($data);
-    if(!(isset($creator_id) && isset($post_id) && isset($content) && isset($recaptcha_response))) {
-      throw new Exception();
-    }
-  }
-  catch(Exception $e) {
-    $response['error'] = 'Missing post data!';
+  $data = json_decode(file_get_contents('php://input'), true);
+  extract($data);
+  require '../config/lang.php';
+
+  if(!(isset($creator_id) && isset($post_id) && isset($content) && isset($recaptcha_response))) {
+    $response['error'] = $text['missing data'][$lang];
     echo json_encode($response);
     return;
   }
@@ -21,7 +18,7 @@
 
   $error = array();
   if(!validate_recaptcha($recaptcha_response)) {
-    $error['recaptcha_err'] = '未通過驗證(Did not pass recaptcha) !';
+    $error['recaptcha_err'] = $text['did not pass recaptcha'][$lang];
     $response['error'] = $error;
     echo json_encode($response);
     return;

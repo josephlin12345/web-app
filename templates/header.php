@@ -7,7 +7,6 @@
     exit;
   }
   require $path . 'templates/lang.php';
-  $lang = isset($_COOKIE['lang']) ? $_COOKIE['lang'] : 'en';
   $api_url = 'http://i4010.isrcttu.net:9651/api';
 ?>
 <!DOCTYPE html>
