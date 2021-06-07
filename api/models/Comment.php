@@ -6,6 +6,27 @@
       $this->db_conn = $db_conn;
     }
 
+    public function get_total($post_id, $timestamp) {
+      $query = 'SELECT count(id)
+        FROM comments
+        WHERE post_id=:post_id AND valid=true AND modified_at < :timestamp
+        ORDER BY modified_at DESC';
+      try {
+        $stmt = $this->db_conn->prepare($query);
+        $stmt->execute(
+          array(
+            ':post_id' => $post_id,
+            ':timestamp' => $timestamp
+            )
+        );
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['count(id)'];
+      }
+      catch(PDOException $e) {
+        die('Database Connection Error: ' . $e->getMessage());
+      }
+    }
+
     public function get($post_id, $timestamp, $offset, $limit) {
       if($limit > 100) $limit = 100;
       if($offset < 0) $offset = 0;
@@ -15,7 +36,6 @@
         WHERE post_id=:post_id AND comments.valid=true AND comments.modified_at < :timestamp
         ORDER BY modified_at DESC
         LIMIT ' . $offset . ', ' . $limit;
-
       try {
         $stmt = $this->db_conn->prepare($query);
         $stmt->execute(

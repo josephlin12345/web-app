@@ -80,7 +80,7 @@
       'zh-TW' => '最後修改時間'
     ),
     'create time' => array(
-      'en' => 'Create At',
+      'en' => 'Created At',
       'zh-TW' => '建立時間'
     ),
     'modify profile' => array(

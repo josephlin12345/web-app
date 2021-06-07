@@ -20,7 +20,9 @@
 
   $comment_api = new Comment($db_conn);
   $result = $comment_api->get($_GET['post_id'], $_GET['timestamp'], $_GET['offset'], $_GET['limit']);
+  $total = $comment_api->get_total($_GET['post_id'], $_GET['timestamp']);
   $response['data'] = $result;
+  $response['total'] = $total;
 
   echo json_encode($response);
 ?>

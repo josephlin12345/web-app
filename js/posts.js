@@ -25,8 +25,7 @@ function create_post(user_id) {
 
 async function get(url) {
   const response = await fetch(url);
-  const data = await response.json();
-  return data['data'];
+  return await response.json();
 }
 
 function show_more(post_id) {
@@ -102,7 +101,7 @@ async function load_posts(load_type) {
       url += `get.php?timestamp=${now}&offset=${offset}&limit=${post_limit}`;
       break;
   }
-  const posts = await get(url);
+  const posts = (await get(url))['data'];
   switch(load_type) {
     case 'user':
     case 'all':

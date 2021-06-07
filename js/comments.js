@@ -89,17 +89,19 @@ async function load_comments(post_id, latest) {
   let url = `${api_url}/comment/`;
   if(latest) url += `get_latest.php?post_id=${post_id}&timestamp=${loaded_comments[post_id]['latest_comment_time']}&limit=${comment_limit}`;
   else url += `get.php?post_id=${post_id}&timestamp=${loaded_comments[post_id]['now']}&offset=${loaded_comments[post_id]['offset']}&limit=${comment_limit}`;
-  const comments = await get(url);
+  const data = await get(url);
+  const comments = data['data'];
   if(latest) {
     if(comments.length > 0) loaded_comments[post_id]['latest_comment_time'] = comments[comments.length - 1]['modified_at'];
     insert_comments(comments, post_id, false);
   }
   else {
+    const total = data['total'];
+    loaded_comments[post_id]['offset'] += comments.length;
     const comments_element = document.getElementById(`comments-${post_id}`);
     const load_more = comments_element.querySelector('[name="load_more_comments"]');
-    if(comments.length == 0 || comments.length < comment_limit) load_more.classList.add('hidden');
+    if(loaded_comments[post_id]['offset'] == total) load_more.classList.add('hidden');
     else load_more.classList.remove('hidden');
-    loaded_comments[post_id]['offset'] += comments.length;
     insert_comments(comments, post_id, true);
   }
 }
