@@ -6,6 +6,7 @@
   });
 </script>
 
+<div class="go_top" onclick="window.scrollTo(0, 0)"></div>
 <input type="hidden" id="recaptcha_response">
 <div id="posts" class="container">
   <template id="post">
