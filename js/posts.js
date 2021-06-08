@@ -33,8 +33,8 @@ function show_more(post_id) {
   const content = post.querySelector('.content');
   const button = post.querySelector('[name="show_more"]');
   const show = content.classList.toggle('show-all-content');
-  if(show) button.innerText = 'Show Less';
-  else button.innerText = 'Show More';
+  if(show) button.innerText = text['show less'][lang];
+  else button.innerText = text['show more'][lang];
 }
 
 function decodeHTML(text) {

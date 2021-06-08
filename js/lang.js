@@ -13,6 +13,14 @@ const text = {
   'close comments': {
     'en': 'Close Comments',
     'zh-TW': '關閉留言'
+  },
+  'show more': {
+    'en': 'Show More',
+    'zh-TW': '顯示更多'
+  },
+  'show less': {
+    'en': 'Show Less',
+    'zh-TW': '顯示較少'
   }
 };
 let lang = getCookie('lang');
