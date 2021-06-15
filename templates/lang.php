@@ -110,6 +110,14 @@
     'about' => array(
       'en' => 'About',
       'zh-TW' => '關於'
+    ),
+    'owner' => array(
+      'en' => 'Owner',
+      'zh-TW' => '所有者'
+    ),
+    'collaborator' => array(
+      'en' => 'Collaborator',
+      'zh-TW' => '合作者'
     )
   );
 ?>
