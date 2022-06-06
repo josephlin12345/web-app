@@ -1,10 +1,10 @@
 <?php
   class Database {
     // db parameters
-    private $host = 'i4010db.isrcttu.net:4010';
-    private $dbname = 'I4010_9651';
-    private $username = 'ui3b24';
-    private $password = '0903926009';
+    private $host = '';
+    private $dbname = '';
+    private $username = '';
+    private $password = '';
     private $conn;
 
     // connect to db
